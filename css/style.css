@@ -598,8 +598,17 @@ a { color: inherit; text-decoration: none; }
 /* ===== PROPERTY TYPES ===== */
 .property-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+
+.property-img-svg {
+  background: linear-gradient(135deg, #EAF3FC, #BDD9F2);
+}
+
+.property-img-svg img {
+  object-fit: contain !important;
+  padding: 20px;
 }
 
 .property-card {
@@ -1339,16 +1348,62 @@ footer {
   .pricing-grid         { grid-template-columns: 1fr; }
   .price-example-items  { grid-template-columns: 1fr; }
 
-  .diff-table-header,
-  .diff-tr,
-  .diff-cta-row {
-    grid-template-columns: 100px 1fr 1fr;
+  /* テーブルをカード形式に変換 */
+  .diff-subtitle { font-size: 13px; margin-bottom: 24px; }
+
+  .diff-table-header { display: none; }
+
+  .diff-tr {
+    grid-template-columns: 1fr;
+    border-top: none;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    border: 1.5px solid var(--gray-border);
   }
-  .diff-td-label { padding: 14px 10px; font-size: 12px; }
-  .diff-td-others,
-  .diff-td-ours { padding: 14px 12px; font-size: 12px; }
-  .diff-th-others,
-  .diff-th-ours { padding: 12px 10px; font-size: 12px; }
+
+  .diff-td-label {
+    background: var(--navy-dark);
+    color: var(--white);
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .diff-icon-box { background: rgba(255,255,255,0.15) !important; }
+
+  .diff-td-others {
+    border-right: none;
+    border-bottom: 1px solid var(--gray-border);
+    padding: 12px 16px;
+    font-size: 13px;
+    background: #FFF8F8;
+  }
+
+  .diff-td-ours {
+    padding: 14px 16px;
+    font-size: 13px;
+    border-left: 4px solid var(--orange);
+    background: var(--white);
+  }
+
+  .diff-cta-row {
+    grid-template-columns: 1fr;
+    border-top: none;
+  }
+
+  .diff-cta-spacer,
+  .diff-cta-spacer-mid { display: none; }
+
+  .diff-cta-col {
+    border-radius: 12px;
+    margin-top: 4px;
+    padding: 16px;
+  }
+
+  .diff-cta-btn { font-size: 15px; }
 
   .flow-steps { gap: 2px; }
   .flow-step  { min-width: 60px; }
